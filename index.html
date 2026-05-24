@@ -1,0 +1,933 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KA STUDIOS</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:'Inter',sans-serif;
+    background:#05070d;
+    color:white;
+    overflow-x:hidden;
+}
+
+/* BACKGROUND */
+
+body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+
+    background:
+    radial-gradient(circle at top left, rgba(0,140,255,0.15), transparent 35%),
+    radial-gradient(circle at bottom right, rgba(255,0,90,0.08), transparent 35%);
+
+    z-index:-2;
+}
+
+body::after{
+    content:"";
+    position:fixed;
+    inset:0;
+
+    background:
+    linear-gradient(to bottom,
+    rgba(0,0,0,0.65),
+    rgba(0,0,0,0.35),
+    rgba(0,0,0,0.9));
+
+    z-index:-1;
+}
+
+/* NAVBAR */
+
+nav{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    padding:22px 8%;
+
+    background:rgba(4,8,15,0.68);
+
+    backdrop-filter:blur(18px);
+
+    border-bottom:1px solid rgba(255,255,255,0.05);
+
+    z-index:999;
+}
+
+/* LOGO */
+
+.logo{
+    opacity:0;
+
+    transform:translateY(-12px);
+
+    pointer-events:none;
+
+    transition:
+    opacity 0.45s ease,
+    transform 0.45s ease;
+}
+
+nav.scrolled .logo{
+    opacity:1;
+
+    transform:translateY(0);
+
+    pointer-events:auto;
+}
+
+.logo h1{
+    font-size:1.6rem;
+    font-weight:900;
+    letter-spacing:2px;
+}
+
+.logo p{
+    font-size:0.65rem;
+    color:#7f8aa1;
+    letter-spacing:5px;
+}
+
+/* MENU */
+
+nav ul{
+    display:flex;
+    gap:34px;
+    list-style:none;
+}
+
+nav ul li a{
+    color:#d7deed;
+    text-decoration:none;
+    font-size:1rem;
+    position:relative;
+}
+
+nav ul li a::after{
+    content:"";
+    position:absolute;
+    left:0;
+    bottom:-8px;
+    width:0%;
+    height:2px;
+    background:white;
+    transition:0.3s;
+}
+
+nav ul li a:hover::after{
+    width:100%;
+}
+
+/* HERO */
+
+.hero{
+    min-height:100vh;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    text-align:center;
+
+    position:relative;
+
+    padding:0 8%;
+
+    background:
+    linear-gradient(rgba(0,0,0,0.72),rgba(0,0,0,0.88)),
+    url('https://images.unsplash.com/photo-1511882150382-421056c89033?q=80&w=2200');
+
+    background-size:cover;
+    background-position:center;
+}
+
+.hero::before{
+    content:"";
+    position:absolute;
+    inset:0;
+
+    background:
+    radial-gradient(circle at center,
+    rgba(0,120,255,0.12),
+    transparent 60%);
+}
+
+.hero-content{
+    position:relative;
+    z-index:2;
+}
+
+.hero-subtitle{
+    display:inline-block;
+
+    padding:10px 28px;
+
+    border:1px solid rgba(255,255,255,0.1);
+
+    border-radius:999px;
+
+    background:rgba(255,255,255,0.03);
+
+    color:#9eb2d2;
+
+    letter-spacing:5px;
+
+    font-size:0.78rem;
+
+    margin-bottom:34px;
+}
+
+.hero h2{
+    font-size:9rem;
+    line-height:0.88;
+
+    font-weight:900;
+
+    letter-spacing:-6px;
+
+    text-transform:uppercase;
+
+    background:linear-gradient(to bottom,#ffffff,#bcc7d8);
+
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+}
+
+.hero-small{
+    margin-top:18px;
+
+    color:#d3dae8;
+
+    letter-spacing:10px;
+
+    font-size:1rem;
+}
+
+.hero p{
+    margin:34px auto 0;
+
+    max-width:900px;
+
+    line-height:2;
+
+    color:#d0d7e4;
+
+    font-size:1.12rem;
+}
+
+/* BUTTONS */
+
+.buttons{
+    margin-top:45px;
+}
+
+.btn{
+    display:inline-block;
+
+    padding:16px 38px;
+
+    border-radius:15px;
+
+    text-decoration:none;
+
+    font-weight:600;
+
+    transition:0.35s;
+
+    margin:10px;
+}
+
+.btn-primary{
+    background:white;
+    color:#0a0f17;
+}
+
+.btn-primary:hover{
+    transform:translateY(-5px);
+}
+
+.btn-secondary{
+    border:1px solid rgba(255,255,255,0.12);
+
+    background:rgba(255,255,255,0.03);
+
+    color:white;
+}
+
+/* SECTIONS */
+
+section{
+    padding:120px 8%;
+}
+
+.section-header{
+    margin-bottom:50px;
+}
+
+.section-header h3{
+    font-size:3rem;
+    text-transform:uppercase;
+    margin-bottom:10px;
+}
+
+.section-header p{
+    color:#93a1b7;
+}
+
+/* GAMES */
+
+.games-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(450px,1fr));
+    gap:35px;
+}
+
+.game-card{
+    background:rgba(255,255,255,0.03);
+
+    border:1px solid rgba(255,255,255,0.08);
+
+    border-radius:24px;
+
+    overflow:hidden;
+
+    transition:0.45s;
+}
+
+.game-card:hover{
+    transform:translateY(-10px);
+
+    border-color:rgba(0,170,255,0.3);
+
+    box-shadow:
+    0 0 40px rgba(0,170,255,0.08),
+    0 20px 60px rgba(0,0,0,0.5);
+}
+
+.game-image{
+    height:390px;
+
+    background-size:cover;
+    background-position:center;
+
+    position:relative;
+
+    overflow:hidden;
+}
+
+.game-image::after{
+    content:"";
+    position:absolute;
+    inset:0;
+
+    background:
+    linear-gradient(to top,
+    rgba(0,0,0,0.95),
+    rgba(0,0,0,0.1),
+    rgba(0,0,0,0.45));
+}
+
+/* KOD9 */
+
+.kod9{
+    background-image:
+    linear-gradient(rgba(0,0,0,0.2),rgba(0,0,0,0.55)),
+    url('https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?q=80&w=2200');
+}
+
+.kod9-logo{
+    position:absolute;
+
+    left:50%;
+    top:50%;
+
+    transform:translate(-50%,-50%);
+
+    z-index:3;
+}
+
+.kod9-logo h1{
+    font-size:6rem;
+
+    font-weight:900;
+
+    letter-spacing:-5px;
+
+    text-shadow:
+    0 0 40px rgba(255,255,255,0.15),
+    0 0 80px rgba(0,0,0,0.9);
+}
+
+/* ECHO */
+
+.echo{
+    background-image:
+    linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.65)),
+    url('https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?q=80&w=2200');
+}
+
+.echo-logo{
+    position:absolute;
+
+    left:50%;
+    top:50%;
+
+    transform:translate(-50%,-50%);
+
+    text-align:center;
+
+    z-index:3;
+}
+
+.echo-logo h1{
+    font-size:5.5rem;
+
+    font-weight:900;
+
+    letter-spacing:4px;
+
+    text-shadow:
+    0 0 40px rgba(255,255,255,0.12),
+    0 0 80px rgba(0,0,0,0.9);
+}
+
+.echo-logo span{
+    letter-spacing:12px;
+
+    font-size:1rem;
+
+    color:#ff4343;
+}
+
+.game-content{
+    padding:28px;
+}
+
+.game-content h4{
+    font-size:2rem;
+    margin-bottom:14px;
+}
+
+.game-content p{
+    color:#c2cbda;
+    line-height:1.8;
+}
+
+/* TEAM */
+
+.team-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+    gap:30px;
+}
+
+.team-card{
+    background:
+    linear-gradient(
+    180deg,
+    rgba(255,255,255,0.04),
+    rgba(255,255,255,0.02));
+
+    border:1px solid rgba(255,255,255,0.07);
+
+    border-radius:24px;
+
+    padding:38px;
+
+    transition:0.45s;
+}
+
+.team-card:hover{
+    transform:translateY(-10px);
+
+    border-color:rgba(0,170,255,0.25);
+}
+
+.team-role{
+    font-size:0.82rem;
+
+    letter-spacing:5px;
+
+    color:#7ca6d8;
+
+    margin-bottom:18px;
+}
+
+.team-card h4{
+    font-size:2rem;
+
+    font-weight:800;
+
+    margin-bottom:14px;
+}
+
+.team-card p{
+    color:#bcc8da;
+
+    line-height:1.9;
+}
+
+/* BOXES */
+
+.studio-box,
+.contact-box,
+.donate-box{
+    background:rgba(255,255,255,0.03);
+
+    border:1px solid rgba(255,255,255,0.06);
+
+    border-radius:24px;
+
+    padding:45px;
+
+    line-height:2;
+
+    color:#c8d2e3;
+}
+
+/* FOOTER */
+
+footer{
+    padding:40px 8%;
+
+    border-top:1px solid rgba(255,255,255,0.06);
+
+    display:flex;
+    justify-content:space-between;
+    flex-wrap:wrap;
+
+    color:#8c97ab;
+}
+
+/* MOBILE */
+
+@media(max-width:900px){
+
+    nav{
+        flex-direction:column;
+        gap:20px;
+    }
+
+    nav ul{
+        flex-wrap:wrap;
+        justify-content:center;
+    }
+
+    .hero h2{
+        font-size:4.8rem;
+    }
+
+    .games-grid{
+        grid-template-columns:1fr;
+    }
+
+}
+
+@media(max-width:600px){
+
+    .hero h2{
+        font-size:3.5rem;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<nav id="navbar">
+
+<div class="logo">
+<h1>KA STUDIOS</h1>
+<p>KARAKUYU STUDIOS</p>
+</div>
+
+<ul>
+<li><a href="#home">Ana Sayfa</a></li>
+<li><a href="#games">Oyunlar</a></li>
+<li><a href="#studio">Stüdyo</a></li>
+<li><a href="#team">Takım</a></li>
+<li><a href="#donate">Bağış</a></li>
+<li><a href="#contact">İletişim</a></li>
+</ul>
+
+</nav>
+
+<section class="hero" id="home">
+
+<div class="hero-content">
+
+<div class="hero-subtitle">
+CINEMATIC GAME DEVELOPMENT STUDIO
+</div>
+
+<h2>
+KA<br>
+STUDIOS
+</h2>
+
+<div class="hero-small">
+KARAKUYU STUDIOS
+</div>
+
+<p>
+KA STUDIOS; atmosferik hikâyeler, güçlü oynanış sistemleri
+ve sinematik deneyimler geliştiren bağımsız bir oyun stüdyosudur.
+</p>
+
+<div class="buttons">
+
+<a href="#games" class="btn btn-primary">
+Oyunları İncele
+</a>
+
+<a href="#studio" class="btn btn-secondary">
+Stüdyoyu Keşfet
+</a>
+
+</div>
+
+</div>
+
+</section>
+
+<section id="games">
+
+<div class="section-header">
+
+<h3>OYUNLARIMIZ</h3>
+
+<p>
+Hikâye odaklı modern oyun projeleri.
+</p>
+
+</div>
+
+<div class="games-grid">
+
+<div class="game-card">
+
+<div class="game-image kod9">
+
+<div class="kod9-logo">
+<h1>KOD9</h1>
+</div>
+
+</div>
+
+<div class="game-content">
+
+<h4>KOD9</h4>
+
+<p>
+Büyük bir salgın sonrası çöken dünyada geçen açık dünya hayatta kalma oyunu.
+Oyuncular kaynak toplar, üs kurar ve zombi sürülerine karşı savaşır.
+</p>
+
+</div>
+
+</div>
+
+<div class="game-card">
+
+<div class="game-image echo">
+
+<div class="echo-logo">
+<h1>ECHO</h1>
+<span>PROTOKOL</span>
+</div>
+
+</div>
+
+<div class="game-content">
+
+<h4>ECHO PROTOKOL</h4>
+
+<p>
+FBI bürosunda geçen, sorgu ve analiz odaklı sinematik dedektiflik deneyimi.
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<section id="studio">
+
+<div class="section-header">
+
+<h3>STÜDYO</h3>
+
+<p>
+Atmosferik dünya tasarımı ve sinematik deneyim.
+</p>
+
+</div>
+
+<div class="studio-box">
+
+KA STUDIOS; atmosfer, hikâye anlatımı
+ve oynanış kalitesine odaklanan bağımsız
+bir oyun geliştirme stüdyosudur.
+
+</div>
+
+</section>
+
+<section id="team">
+
+<div class="section-header">
+
+<h3>TAKIM</h3>
+
+<p>
+KA STUDIOS geliştirme ekibi ve yaratıcı departmanlar.
+</p>
+
+</div>
+
+<div class="team-grid">
+
+<!-- LEAD DEVELOPER -->
+
+<div class="team-card">
+
+<div class="team-role">
+LEAD DEVELOPER
+</div>
+
+<h4>
+ERDEM KARAKUYU
+</h4>
+
+<p>
+KA STUDIOS'un ana geliştiricisi ve proje yöneticisi.
+</p>
+
+</div>
+
+<!-- SECOND DEVELOPERS -->
+
+<div class="team-card">
+
+<div class="team-role">
+SECOND DEVELOPERS
+</div>
+
+<h4>
+YARDIMCI GELİŞTİRİCİLER
+</h4>
+
+<p>
+Nando Studio<br>
+Project Nature<br>
+ScansMatter
+</p>
+
+</div>
+
+<!-- VOICE ACTING -->
+
+<div class="team-card">
+
+<div class="team-role">
+SESLENDİRME
+</div>
+
+<h4>
+VOICE ACTING
+</h4>
+
+<p>
+Erdem K.<br>
+Muhammed S.<br>
+Helin K.<br>
+Yapay Zeka
+</p>
+
+</div>
+
+<!-- C++ DEVELOPER -->
+
+<div class="team-card">
+
+<div class="team-role">
+C++ DEVELOPER ARANIYOR
+</div>
+
+<h4>
+ENGINE PROGRAMMING
+</h4>
+
+<p>
+Unreal Engine sistemleri ve oyun mekanikleri geliştirecek geliştiriciler aranıyor.
+</p>
+
+</div>
+
+<!-- VOICE ACTOR -->
+
+<div class="team-card">
+
+<div class="team-role">
+SESLENDİRME ARANIYOR
+</div>
+
+<h4>
+VOICE ACTING
+</h4>
+
+<p>
+Karakterlere güçlü atmosfer kazandırabilecek seslendirme sanatçıları aranıyor.
+</p>
+
+</div>
+
+</div>
+
+</section>
+<section id="donate">
+
+<div class="section-header">
+
+<h3>BAĞIŞ</h3>
+
+<p>
+KA STUDIOS projelerine destek olun ve geliştirme sürecine katkıda bulunun.
+</p>
+
+</div>
+
+<div class="donate-box">
+
+<strong>KA STUDIOS Destek Fonu</strong>
+
+<br><br>
+
+Bağışlar; oyun geliştirme, sunucu giderleri,
+seslendirme, modelleme ve yazılım süreçlerinde kullanılmaktadır.
+
+<br><br>
+
+IBAN:
+<br>
+
+TR15 0001 0090 1056 2834 0050 01
+
+<br><br>
+
+Alıcı:
+<br>
+
+ERDEM KARAKUYU
+
+</div>
+
+</section>
+
+<section id="contact">
+
+<div class="section-header">
+
+<h3>İLETİŞİM</h3>
+
+<p>
+KA STUDIOS ile iletişime geçin, iş birlikleri ve ekip başvuruları için bize ulaşın.
+</p>
+
+</div>
+
+<div class="contact-box">
+
+📧 erdemkarakuyu1@gmail.com
+
+<br><br>
+
+📧 ekarakuyu02@gmail.com
+
+<br><br>
+
+Developer başvuruları, seslendirme başvuruları
+ve proje iş birlikleri için mail gönderebilirsiniz.
+
+</div>
+
+</section>
+<section id="contact">
+
+<div class="section-header">
+
+<h3>İLETİŞİM</h3>
+
+<p>
+Bizimle iletişime geçin.
+</p>
+
+</div>
+
+<div class="contact-box">
+
+📧 erdemkarakuyu1@gmail.com
+
+<br>
+
+📧 ekarakuyu02@gmail.com
+
+</div>
+
+</section>
+
+<footer>
+
+<div>
+© 2026 KA STUDIOS
+</div>
+
+<div>
+KARAKUYU STUDIOS
+</div>
+
+</footer>
+
+<script>
+
+const navbar = document.getElementById("navbar");
+
+window.addEventListener("scroll", () => {
+
+if(window.scrollY > 120){
+navbar.classList.add("scrolled");
+}else{
+navbar.classList.remove("scrolled");
+}
+
+});
+
+</script>
+
+</body>
+</html>
